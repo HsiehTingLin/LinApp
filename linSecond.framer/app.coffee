@@ -1,60 +1,81 @@
+#Basic Config
+searchResault = "12B病房" # Change the name here if needed
+patientName = "林大儒"
+backToList.text = "回" + searchResault
 flow_ptList = new FlowComponent
-flow_ptList.showNext(launchScreen)
-go.onTap ->
-	flow_ptList.showNext(patientList)
-	
+flow_ptList.showNext(login)
+flow_tabbar = new FlowComponent
+flow_tabbar.visible = no 
+logInBtn.onTap ->
+	flow_ptList.showOverlayBottom(patientList)
+	navBar_ptList.visible = !navBar_ptList.visible
+logOut.onTap ->
+	flow_ptList.showOverlayTop(login)
+	navBar_ptList.showPrevious()
+	navBar_ptList.visible = !navBar_ptList.visible
+	toSetting.visible = !toSetting.visible
 NavbarComponent = require "NavbarComponent"
-myNavbar = new NavbarComponent
+navBar_ptList = new NavbarComponent
 	# General
 	style: "light"
-	title: "12B病房"
+	title: searchResault
 	size: "small"
 
 	# Search bar
 	backAction: -> 
-		myNavbar.showPrevious()
+		navBar_ptList.showPrevious()
 		flow_ptList.showPrevious()
-statusbar1.parent = myNavbar
-
-toLeft.onTap ->
-	myNavbar.showNext("oh no")
-	flow_ptList.showNext(setting,animations: false)
-	
-myNavbar2 = new NavbarComponent
+		toSetting.visible = !toSetting.visible
+navBar_ptList.visible = no
+navBar_tabbar = new NavbarComponent
 	style: "light"
-	title: "林大儒"
+	title: patientName
 	size: "small"
 	backAction: -> 
-		myNavbar2.showPrevious()
+		navBar_tabbar.showPrevious()
 		flow_tabbar.showPrevious()
-myNavbar2.visible = no 
-statusbar_light2.parent = myNavbar2	
-flow_tabbar = new FlowComponent
-flow_tabbar.visible = no 
+navBar_tabbar.visible = no 
+statusbar2.parent = navBar_tabbar	
+statusbar1.parent = navBar_ptList
+#Interaction begin
+toSetting.parent = navBar_ptList 
+toSetting.onTap ->
+	navBar_ptList.showNext("設定")
+	flow_ptList.showNext(setting,animations: false)
+	toSetting.visible = no
 
-# Please remember to put all your code in  intend
+#Go into a patient data 
+#Please remember to put all your code in  intend
+
 goToPatient.onTap ->
 	flow_tabbar.visible = !flow_tabbar.visible
-	myNavbar.visible = !myNavbar.visible
-	myNavbar2.visible = !myNavbar2.visible
+	navBar_ptList.visible = !navBar_ptList.visible
+	navBar_tabbar.visible = !navBar_tabbar.visible
 	flow_ptList.showOverlayBottom(flow_tabbar)
 	flow_tabbar.showNext(generalInfo)
 	flow_tabbar.footer = tabbar
-	fly.onTap ->
-		myNavbar2.showNext("order")
-		flow_tabbar.showNext(order)
-	back4.onTap ->
-		flow_tabbar.showPrevious()
 	orderBar.onTap ->
-		myNavbar2.showNext("order")
+		navBar_tabbar.showNext("Order")
 		flow_tabbar.showNext(order)
 	infoBar.onTap ->
+		navBar_tabbar.showNext(patientName)
 		flow_tabbar.showNext(generalInfo)
+	emrBar.onTap ->
+		navBar_tabbar.showNext("EMR")
+		flow_tabbar.showNext(emr)
+	labTPRBar.onTap ->
+		navBar_tabbar.showNext("TPR")
+		flow_tabbar.showNext(labTPR_TPR)
+	pacsBar.onTap ->
+		navBar_tabbar.showNext("PACS")
+		flow_tabbar.showNext(pacs)
+		
+		
 
 
-# put this line at the last line very important
-back3.parent = myNavbar2 
-back3.onTap -> 
+#Back To List: put this line at the last line very important
+backToList.parent = navBar_tabbar 
+backToList.onTap -> 
 	flow_ptList.showPrevious()
-	myNavbar.visible = yes
-	myNavbar2.visible = !myNavbar2.visible 
+	navBar_ptList.visible = yes
+	navBar_tabbar.visible = !navBar_tabbar.visible 
