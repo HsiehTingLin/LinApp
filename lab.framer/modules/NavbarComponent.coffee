@@ -294,7 +294,6 @@ class NavbarComponent extends Layer
 				searchBar = new Layer
 					parent: searchBarClip
 					x: 8
-#Error in this line
 					y: Align.bottom(-16)
 					width: @.width - 16
 					height: 36
@@ -383,7 +382,6 @@ class NavbarComponent extends Layer
 				@.bkgd.y = Align.bottom
 				@.title.scale = 1
 				@.title.y = 2
-				# bug here
 				#@.searchBar.y = Align.bottom(-16)
 				#@.searchBar.opacity = 1
 				@.clippingFrame.height = @.height
