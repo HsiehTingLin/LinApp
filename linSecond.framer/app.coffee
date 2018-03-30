@@ -115,35 +115,23 @@ patientListContent.onTap ->
 	flow_tabbar.showNext(generalInfo)
 	flow_tabbar.footer = tabbar
 
-orderBar.onTap ->
-	navBar_tabbar.showNext("Order")
-	flow_tabbar.showNext(order)
-infoBar.onTap ->
-	navBar_tabbar.showNext(patientName)
-	flow_tabbar.showNext(generalInfo)
-emrBar.onTap ->
-	navBar_tabbar.showNext("EMR")
-	flow_tabbar.showNext(emr)
-labTPRBar.onTap ->
-	navBar_tabbar.showNext("TPR")
-	flow_tabbar.showNext(labTPR_TPR)
-pacsBar.onTap ->
-	navBar_tabbar.showNext("PACS")
-	flow_tabbar.showNext(pacs)
-noteScrollContent.onTap ->
-	navBar_tabbar.showNext("Admission")
-	flow_tabbar.showNext(noteShow)
-orderScrollContent.onTap ->
-	navBar_tabbar.showNext("Drugs Name")
-	flow_tabbar.showNext(orderShow)
-pacsScrollContent.onTap ->
-	navBar_tabbar.showNext("MRI 20180313")
-	flow_tabbar.showNext(pacsShow)
-emrItem.onTap ->
-	navBar_tabbar.showNext("item")
-	flow_tabbar.showNext(emrShow)
-		
-
+#flow Control
+flowing = (btn, title, goTo) ->
+	btn.onTap ->
+		navBar_tabbar.showNext(title) #title is a string
+		flow_tabbar.showNext(goTo)		
+flowing(orderBar, "Order",order)
+flowing(infoBar,patientName,generalInfo)
+flowing(emrBar,"EMR",emr)
+flowing(labTPRBar,"TPR",labTPR_TPR)
+flowing(pacsBar,"PACS",pacs)
+flowing(noteScrollContent,"Admission",noteShow)
+flowing(orderScrollContent,"Drugs Name",orderShow)
+flowing(pacsScrollContent,"MRI 20180313",pacsShow)
+flowing(emrItem,"item",emrShow)
+flowing(leftTpr,"TPR",labTPR_TPR)
+flowing(rightLab,"Lab",labTPR_Lab)
+flowing(cardLab,"生化",labShow)
 
 #Back To List: put this line at the last line very important
 backToList.parent = navBar_tabbar 
@@ -151,3 +139,96 @@ backToList.onTap ->
 	flow_ptList.showPrevious()
 	navBar_ptList.visible = yes
 	navBar_tabbar.visible = !navBar_tabbar.visible 
+
+
+#Lab Config
+array = [[1,2],[1,2]]
+#print(array[1][1])
+
+cardHight = 100
+margin = 10
+cardWidth = Screen.width - margin*2
+padding = 30
+cards = []
+names = ["AST", "ALT", "BUN", "Cr"]
+valueHight = 50
+valueWidth = 40
+valuePadding = 40
+
+values = ["11","23","11","22","11","23","22","33","11","22"]
+labels = ["AST","ALT","BUN","Creatine","Na","K","Cl","HCO3-","a","a","a"]
+datesText = ["01/21","01/22","01/23","01/24","01/25","01/26","01/27","01/27","01/27","01/27"]
+dates = []
+
+horizontalWidth = (index) -> 
+	return (valueWidth+ valuePadding)*index + valuePadding
+
+scroll1 = new ScrollComponent
+	parent: labShow
+	height: 628
+	width: screen.width
+	scrollHorizontal: false
+	scroll.directionLock = true 
+	
+scroll2 = new ScrollComponent
+	height: (cardHight + padding)*labels.length + padding
+	scrollVertical: false
+	width: cardWidth 
+	x: Align.center
+	scroll.mouseWheelEnabled = true
+
+scroll3 = new ScrollComponent
+	parent: labShow
+	height: valueHight
+	scrollVertical: false
+	width: 375
+
+for i in [0...labels.length]
+
+	card = new Layer
+		width: cardWidth
+		height: cardHight
+		x: margin
+		y: (cardHight + padding)*i + padding
+		clip: true
+		parent: scroll1.content
+		backgroundColor: "rgba(208,220,217,1)"
+		borderRadius: 19
+		fontSize: "12px"
+	label = new TextLayer
+		fontSize: 20
+		x: margin + 10
+		y: (cardHight + padding)*i + padding + 10
+		parent: scroll1.content
+		superLayer: card
+		text: labels[i]
+		for j in [0...values.length]
+			value = new TextLayer
+				fontSize: 30
+				padding:
+					top:40
+				x: horizontalWidth(j)
+				y: (cardHight + padding)*i + padding
+				parent: scroll2.content
+			value.text = values[j]
+	cards.push(card)
+scroll2.parent = scroll1.content
+
+for k in [0..9]
+	date = new TextLayer
+		fontSize: 20
+		top:40
+		x: horizontalWidth(k)
+		text: datesText[k]
+		parent: scroll3.content 
+scroll2.onMove ->
+	scroll3.scrollX = scroll2.scrollX
+
+today = 4
+scroll2.onClick ->
+	scroll2.scrollToPoint(
+		x: horizontalWidth(today)
+		true
+		curve: Bezier.ease, time: .5
+	)
+   
