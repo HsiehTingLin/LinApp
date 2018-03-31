@@ -29,119 +29,8 @@
         "centerAnchorY" : 0,
         "children" : [
           {
-            "__class" : "TextNode",
-            "autoSize" : true,
-            "blendingEnabled" : 0,
-            "blendingMode" : "normal",
-            "blur" : 12,
-            "blurEnabled" : 0,
-            "blurType" : "layer",
-            "bottom" : 260,
-            "brightness" : 100,
-            "brightnessEnabled" : 0,
-            "centerAnchorX" : 0.5,
-            "centerAnchorY" : 0.59595202398800595,
-            "constraintsLocked" : false,
-            "contrast" : 100,
-            "contrastEnabled" : 0,
-            "editable" : false,
-            "exportOptions" : [
-
-            ],
-            "grayscale" : 0,
-            "grayScaleEnabled" : 0,
-            "height" : 19,
-            "heightFactor" : null,
-            "hueRotate" : 0,
-            "hueRotateEnabled" : 0,
-            "id" : "LxslYJEU4",
-            "invert" : 0,
-            "invertEnabled" : 0,
-            "left" : null,
-            "locked" : false,
-            "name" : "logInBtn",
-            "opacity" : 1,
-            "parentid" : "xroovujHx",
-            "right" : null,
-            "rotation" : 0,
-            "saturate" : 100,
-            "saturateEnabled" : 0,
-            "sepia" : 0,
-            "sepiaEnabled" : 0,
-            "shadows" : [
-
-            ],
-            "styledText" : {
-              "__class" : "StyledTextDraft",
-              "blocks" : [
-                {
-                  "data" : {
-                    "emptyStyle" : [
-                      "FONT:HelveticaNeue",
-                      "COLOR:rgb(0, 0, 0)",
-                      "SIZE:16",
-                      "LETTERSPACING:0",
-                      "LINEHEIGHT:1.2"
-                    ]
-                  },
-                  "depth" : 0,
-                  "entityRanges" : [
-
-                  ],
-                  "inlineStyleRanges" : [
-                    {
-                      "length" : 4,
-                      "offset" : 0,
-                      "style" : "FONT:HelveticaNeue"
-                    },
-                    {
-                      "length" : 4,
-                      "offset" : 0,
-                      "style" : "COLOR:rgb(0, 0, 0)"
-                    },
-                    {
-                      "length" : 4,
-                      "offset" : 0,
-                      "style" : "SIZE:16"
-                    },
-                    {
-                      "length" : 4,
-                      "offset" : 0,
-                      "style" : "LETTERSPACING:0"
-                    },
-                    {
-                      "length" : 4,
-                      "offset" : 0,
-                      "style" : "LINEHEIGHT:1.2"
-                    }
-                  ],
-                  "key" : "7v3kf",
-                  "text" : "按我登入",
-                  "type" : "unstyled"
-                }
-              ],
-              "cached" : {
-                "html" : "<span data-offset-key=\"7v3kf-0-0\" style=\"tab-size:4;font-weight:400;font-family:&quot;HelveticaNeue&quot;, &quot;Helvetica Neue&quot;, sans-serif;-webkit-text-fill-color:rgb(0, 0, 0);font-size:16px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">按我登入<\/span><\/span>",
-                "os" : "10_13",
-                "size" : {
-                  "height" : 19,
-                  "width" : 65
-                },
-                "width" : 0
-              },
-              "entityMap" : {
-
-              }
-            },
-            "targetName" : "logInBtn",
-            "top" : null,
-            "visible" : true,
-            "width" : 65,
-            "widthFactor" : null
-          },
-          {
-            "__class" : "ImageNode",
-            "aspectRatioLocked" : true,
+            "__class" : "FrameNode",
+            "aspectRatioLocked" : false,
             "blendingEnabled" : 0,
             "blendingMode" : "normal",
             "blur" : 12,
@@ -162,44 +51,234 @@
             ],
             "brightness" : 100,
             "brightnessEnabled" : 0,
-            "centerAnchorX" : 0.49199999999999999,
-            "centerAnchorY" : 0.46026986506746626,
+            "centerAnchorX" : 0.5,
+            "centerAnchorY" : 0.49925037481259371,
             "children" : [
+              {
+                "__class" : "TextNode",
+                "autoSize" : true,
+                "blendingEnabled" : 0,
+                "blendingMode" : "normal",
+                "blur" : 12,
+                "blurEnabled" : 0,
+                "blurType" : "layer",
+                "bottom" : 0,
+                "brightness" : 100,
+                "brightnessEnabled" : 0,
+                "centerAnchorX" : 0.54225352112676062,
+                "centerAnchorY" : 0.93214285714285716,
+                "constraintsLocked" : false,
+                "contrast" : 100,
+                "contrastEnabled" : 0,
+                "editable" : false,
+                "exportOptions" : [
 
+                ],
+                "grayscale" : 0,
+                "grayScaleEnabled" : 0,
+                "height" : 19,
+                "heightFactor" : null,
+                "hueRotate" : 0,
+                "hueRotateEnabled" : 0,
+                "id" : "LxslYJEU4",
+                "invert" : 0,
+                "invertEnabled" : 0,
+                "left" : null,
+                "locked" : false,
+                "name" : "logInBtn",
+                "opacity" : 1,
+                "parentid" : "x7Je4jlhV",
+                "right" : null,
+                "rotation" : 0,
+                "saturate" : 100,
+                "saturateEnabled" : 0,
+                "sepia" : 0,
+                "sepiaEnabled" : 0,
+                "shadows" : [
+
+                ],
+                "styledText" : {
+                  "__class" : "StyledTextDraft",
+                  "blocks" : [
+                    {
+                      "data" : {
+                        "emptyStyle" : [
+                          "FONT:HelveticaNeue",
+                          "COLOR:rgb(0, 0, 0)",
+                          "SIZE:16",
+                          "LETTERSPACING:0",
+                          "LINEHEIGHT:1.2"
+                        ]
+                      },
+                      "depth" : 0,
+                      "entityRanges" : [
+
+                      ],
+                      "inlineStyleRanges" : [
+                        {
+                          "length" : 4,
+                          "offset" : 0,
+                          "style" : "FONT:HelveticaNeue"
+                        },
+                        {
+                          "length" : 4,
+                          "offset" : 0,
+                          "style" : "COLOR:rgb(0, 0, 0)"
+                        },
+                        {
+                          "length" : 4,
+                          "offset" : 0,
+                          "style" : "SIZE:16"
+                        },
+                        {
+                          "length" : 4,
+                          "offset" : 0,
+                          "style" : "LETTERSPACING:0"
+                        },
+                        {
+                          "length" : 4,
+                          "offset" : 0,
+                          "style" : "LINEHEIGHT:1.2"
+                        }
+                      ],
+                      "key" : "7v3kf",
+                      "text" : "按我登入",
+                      "type" : "unstyled"
+                    }
+                  ],
+                  "cached" : {
+                    "html" : "<span data-offset-key=\"7v3kf-0-0\" style=\"tab-size:4;font-weight:400;font-family:&quot;HelveticaNeue&quot;, &quot;Helvetica Neue&quot;, sans-serif;-webkit-text-fill-color:rgb(0, 0, 0);font-size:16px;letter-spacing:0px;line-height:1.2\"><span data-text=\"true\">按我登入<\/span><\/span>",
+                    "os" : "10_13",
+                    "size" : {
+                      "height" : 19,
+                      "width" : 65
+                    },
+                    "width" : 0
+                  },
+                  "entityMap" : {
+
+                  }
+                },
+                "targetName" : "logInBtn",
+                "top" : null,
+                "visible" : true,
+                "width" : 65,
+                "widthFactor" : null
+              },
+              {
+                "__class" : "ImageNode",
+                "aspectRatioLocked" : true,
+                "blendingEnabled" : 0,
+                "blendingMode" : "normal",
+                "blur" : 12,
+                "blurEnabled" : 0,
+                "blurType" : "layer",
+                "borderBottom" : 1,
+                "borderColor" : "#222",
+                "borderEnabled" : 0,
+                "borderLeft" : 1,
+                "borderPerSide" : false,
+                "borderRight" : 1,
+                "borderStyle" : "solid",
+                "borderTop" : 1,
+                "borderWidth" : 1,
+                "bottom" : null,
+                "boxShadows" : [
+
+                ],
+                "brightness" : 100,
+                "brightnessEnabled" : 0,
+                "centerAnchorX" : 0.5,
+                "centerAnchorY" : 0.2857142857142857,
+                "children" : [
+
+                ],
+                "clip" : true,
+                "constraintsLocked" : false,
+                "contrast" : 100,
+                "contrastEnabled" : 0,
+                "exportOptions" : [
+
+                ],
+                "fillColor" : "transparent",
+                "fillEnabled" : false,
+                "grayscale" : 0,
+                "grayScaleEnabled" : 0,
+                "height" : 80,
+                "heightFactor" : null,
+                "hueRotate" : 0,
+                "hueRotateEnabled" : 0,
+                "id" : "tkHlZ5bEz",
+                "image" : "151IJ8meiQvpPBygEeQde0BfX1R4ueG0HH6715e3EKb6jQjETdmNSUfolXzJPulEKMlC9F3bNxly78ONxJ7g.png",
+                "imageBackgroundSize" : "Cover",
+                "intrinsicHeight" : 80,
+                "intrinsicWidth" : 71,
+                "invert" : 0,
+                "invertEnabled" : 0,
+                "left" : 0,
+                "locked" : false,
+                "name" : null,
+                "opacity" : 1,
+                "originalFilename" : "",
+                "parentid" : "x7Je4jlhV",
+                "pixelHeight" : 80,
+                "pixelWidth" : 71,
+                "radius" : 0,
+                "radiusBottomLeft" : 0,
+                "radiusBottomRight" : 0,
+                "radiusPerCorner" : false,
+                "radiusTopLeft" : 0,
+                "radiusTopRight" : 0,
+                "right" : 0,
+                "rotation" : 0,
+                "saturate" : 100,
+                "saturateEnabled" : 0,
+                "sepia" : 0,
+                "sepiaEnabled" : 0,
+                "targetName" : null,
+                "top" : 0,
+                "visible" : true,
+                "width" : 71,
+                "widthFactor" : null
+              }
             ],
-            "clip" : true,
+            "clip" : false,
             "constraintsLocked" : false,
             "contrast" : 100,
             "contrastEnabled" : 0,
+            "deviceType" : null,
+            "exportIncludesBackground" : true,
             "exportOptions" : [
 
             ],
-            "fillColor" : "transparent",
+            "fillColor" : "rgba(255,255,255,1)",
             "fillEnabled" : false,
+            "fillGradient" : {
+              "__class" : "LinearGradient",
+              "alpha" : 1,
+              "angle" : 0,
+              "end" : "rgba(0,0,0,0)",
+              "start" : "black"
+            },
+            "fillType" : "color",
             "grayscale" : 0,
             "grayScaleEnabled" : 0,
-            "height" : 80,
+            "height" : 140,
             "heightFactor" : null,
             "hueRotate" : 0,
             "hueRotateEnabled" : 0,
-            "id" : "tkHlZ5bEz",
-            "image" : "151IJ8meiQvpPBygEeQde0BfX1R4ueG0HH6715e3EKb6jQjETdmNSUfolXzJPulEKMlC9F3bNxly78ONxJ7g.png",
-            "imageBackgroundSize" : "Cover",
-            "intrinsicHeight" : 80,
-            "intrinsicWidth" : 71,
+            "id" : "x7Je4jlhV",
             "invert" : 0,
             "invertEnabled" : 0,
-            "left" : 149,
+            "left" : null,
             "locked" : false,
             "name" : null,
             "opacity" : 1,
-            "originalFilename" : "",
             "parentid" : "xroovujHx",
-            "pixelHeight" : 80,
-            "pixelWidth" : 71,
             "radius" : 0,
             "radiusBottomLeft" : 0,
             "radiusBottomRight" : 0,
+            "radiusIsRelative" : false,
             "radiusPerCorner" : false,
             "radiusTopLeft" : 0,
             "radiusTopRight" : 0,
@@ -210,7 +289,7 @@
             "sepia" : 0,
             "sepiaEnabled" : 0,
             "targetName" : null,
-            "top" : 267,
+            "top" : null,
             "visible" : true,
             "width" : 71,
             "widthFactor" : null
@@ -6925,9 +7004,7 @@
             "top" : 187,
             "visible" : true,
             "width" : 48,
-            "widthFactor" : null,
-            "x" : 125,
-            "y" : 146
+            "widthFactor" : null
           }
         ],
         "clip" : true,
@@ -11312,9 +11389,7 @@
                 "top" : 248,
                 "visible" : true,
                 "width" : 255,
-                "widthFactor" : null,
-                "x" : 90,
-                "y" : 244
+                "widthFactor" : null
               }
             ],
             "clip" : false,
@@ -25852,9 +25927,7 @@
             "top" : 69,
             "visible" : true,
             "width" : 79,
-            "widthFactor" : null,
-            "x" : 157,
-            "y" : 66
+            "widthFactor" : null
           }
         ],
         "clip" : true,
