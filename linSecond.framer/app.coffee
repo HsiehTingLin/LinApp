@@ -59,6 +59,10 @@ toSetting.onTap ->
 	toSetting.visible = no
 	filter.visible = !filter.visible
 filter.parent = navBar_ptList
+done.onTap ->
+	flow_ptList.showPrevious()
+cancel.onTap ->
+	flow_ptList.showPrevious()
 
 #Scroll Component Config
 ptlistScroll = new ScrollComponent
@@ -128,7 +132,7 @@ flowing(pacsBar,"PACS",pacs)
 flowing(noteScrollContent,"Admission",noteShow)
 flowing(orderScrollContent,"Drugs Name",orderShow)
 flowing(pacsScrollContent,"MRI 20180313",pacsShow)
-flowing(emrItem,"item",emrShow)
+flowing(emrScroll,"item",emrShow)
 flowing(leftTpr,"TPR",labTPR_TPR)
 flowing(rightLab,"Lab",labTPR_Lab)
 flowing(cardLab,"生化",labShow)
@@ -145,15 +149,15 @@ backToList.onTap ->
 array = [[1,2],[1,2]]
 #print(array[1][1])
 
-cardHight = 100
+cardHight = 55
 margin = 10
-cardWidth = Screen.width - margin*2
-padding = 30
+cardWidth = Screen.width 
+padding = 10
 cards = []
 names = ["AST", "ALT", "BUN", "Cr"]
 valueHight = 50
 valueWidth = 40
-valuePadding = 40
+valuePadding = 20
 
 values = ["11","23","11","22","11","23","22","33","11","22"]
 labels = ["AST","ALT","BUN","Creatine","Na","K","Cl","HCO3-","a","a","a"]
@@ -164,10 +168,13 @@ horizontalWidth = (index) ->
 	return (valueWidth+ valuePadding)*index + valuePadding
 
 scroll1 = new ScrollComponent
-	parent: labShow
-	height: 628
+	parent: labShow	
+	height: 528
 	width: screen.width
+
 	scrollHorizontal: false
+	y: 86
+	backgroundColor: "EFEFF4"
 	scroll.directionLock = true 
 	
 scroll2 = new ScrollComponent
@@ -179,36 +186,56 @@ scroll2 = new ScrollComponent
 
 scroll3 = new ScrollComponent
 	parent: labShow
-	height: valueHight
+	height: 20
 	scrollVertical: false
-	width: 375
-
+	width: cardWidth 
+	x: Align.center
+	borderWidth: 
+		bottom: 0.5 
+	borderColor: "8E8E93"
+	contentInset: 
+		right: 20
+	shadowSpread: 1
+	shadowColor: "rgba(215,215,215,0.5)"
+	shadowY: 2
+	shadowBlur: 5
+	
 for i in [0...labels.length]
 
 	card = new Layer
 		width: cardWidth
 		height: cardHight
-		x: margin
 		y: (cardHight + padding)*i + padding
 		clip: true
 		parent: scroll1.content
-		backgroundColor: "rgba(208,220,217,1)"
-		borderRadius: 19
+		backgroundColor: "ffffff"
+
 		fontSize: "12px"
+	card.onTap ->
+		print("Hello World")
 	label = new TextLayer
-		fontSize: 20
-		x: margin + 10
-		y: (cardHight + padding)*i + padding + 10
+		fontSize: 14
+		color: "3F434A"
+		x: margin 
+		y: (cardHight + padding)*i + padding + 8
 		parent: scroll1.content
 		superLayer: card
 		text: labels[i]
+		backgroundColor: "d2d2d2"
+		borderRadius: 25
+		padding:
+			left: 10	
+			right: 10
 		for j in [0...values.length]
 			value = new TextLayer
-				fontSize: 30
+				width: valueWidth
+				height: cardHight
+				fontSize: 18
 				padding:
-					top:40
-				x: horizontalWidth(j)
+					top:30
+				x: horizontalWidth(j) 
 				y: (cardHight + padding)*i + padding
+				
 				parent: scroll2.content
 			value.text = values[j]
 	cards.push(card)
@@ -216,13 +243,15 @@ scroll2.parent = scroll1.content
 
 for k in [0..9]
 	date = new TextLayer
-		fontSize: 20
+		width: valueWidth
+		fontSize: 14
 		top:40
 		x: horizontalWidth(k)
 		text: datesText[k]
 		parent: scroll3.content 
 scroll2.onMove ->
 	scroll3.scrollX = scroll2.scrollX
+scroll3.y = scroll1.y - 20
 
 today = 4
 scroll2.onClick ->
@@ -232,3 +261,120 @@ scroll2.onClick ->
 		curve: Bezier.ease, time: .5
 	)
    
+
+#TPR Config
+array = [[1,2],[1,2]]
+#print(array[1][1])
+
+cardHight = 55
+margin = 10
+cardWidth = Screen.width 
+padding = 10
+cards = []
+names = ["AST", "ALT", "BUN", "Cr"]
+valueHight = 50
+valueWidth = 40
+valuePadding = 20
+graphHight = 200
+
+values = ["11","23","11","22","11","23","22","33","11","22"]
+labels = ["Temp.","Pulse","Resp.","Systolic Pressure","Diastolic Pressure","SaO2","pH","input","output","Blood Sugar","whatever"]
+datesText = ["01/21","01/22","01/23","01/24","01/25","01/26","01/27","01/27","01/27","01/27"]
+dates = []
+
+horizontalWidth = (index) -> 
+	return (valueWidth+ valuePadding)*index + valuePadding
+
+scroll1 = new ScrollComponent
+	parent: labTPR_TPR
+	height: 528
+	width: screen.width
+
+	scrollHorizontal: false
+	y: 86 + graphHight
+	backgroundColor: "EFEFF4"
+	scroll.directionLock = true 
+	
+scroll2 = new ScrollComponent
+	height: (cardHight + padding)*labels.length + padding
+	scrollVertical: false
+	width: cardWidth 
+	x: Align.center
+	scroll.mouseWheelEnabled = true
+
+scroll3 = new ScrollComponent
+	parent: labTPR_TPR
+	height: 20
+	scrollVertical: false
+	width: cardWidth 
+	x: Align.center
+	borderWidth: 
+		bottom: 0.5 
+	borderColor: "8E8E93"
+	contentInset: 
+		right: 20
+	shadowSpread: 1
+	shadowColor: "rgba(215,215,215,0.5)"
+	shadowY: 2
+	shadowBlur: 5
+	
+for i in [0...labels.length]
+
+	card = new Layer
+		width: cardWidth
+		height: cardHight
+		y: (cardHight + padding)*i + padding
+		clip: true
+		parent: scroll1.content
+		backgroundColor: "ffffff"
+
+		fontSize: "12px"
+	card.onTap ->
+		print("Hello World")
+	label = new TextLayer
+		fontSize: 14
+		color: "3F434A"
+		x: margin 
+		y: (cardHight + padding)*i + padding + 8
+		parent: scroll1.content
+		superLayer: card
+		text: labels[i]
+		backgroundColor: "d2d2d2"
+		borderRadius: 25
+		padding:
+			left: 10	
+			right: 10
+		for j in [0...values.length]
+			value = new TextLayer
+				width: valueWidth
+				height: cardHight
+				fontSize: 18
+				padding:
+					top:30
+				x: horizontalWidth(j) 
+				y: (cardHight + padding)*i + padding
+				
+				parent: scroll2.content
+			value.text = values[j]
+	cards.push(card)
+scroll2.parent = scroll1.content
+
+for k in [0..9]
+	date = new TextLayer
+		width: valueWidth
+		fontSize: 14
+		top:40
+		x: horizontalWidth(k)
+		text: datesText[k]
+		parent: scroll3.content 
+scroll2.onMove ->
+	scroll3.scrollX = scroll2.scrollX
+scroll3.y = scroll1.y - 20
+
+today = 4
+scroll2.onClick ->
+	scroll2.scrollToPoint(
+		x: horizontalWidth(today)
+		true
+		curve: Bezier.ease, time: .5
+	)
