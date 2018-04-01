@@ -167,7 +167,7 @@ dates = []
 horizontalWidth = (index) -> 
 	return (valueWidth+ valuePadding)*index + valuePadding
 
-scroll1 = new ScrollComponent
+scroll1_lab = new ScrollComponent
 	parent: labShow	
 	height: 528
 	width: screen.width
@@ -177,14 +177,14 @@ scroll1 = new ScrollComponent
 	backgroundColor: "EFEFF4"
 	scroll.directionLock = true 
 	
-scroll2 = new ScrollComponent
+scroll2_lab = new ScrollComponent
 	height: (cardHight + padding)*labels.length + padding
 	scrollVertical: false
 	width: cardWidth 
 	x: Align.center
 	scroll.mouseWheelEnabled = true
 
-scroll3 = new ScrollComponent
+scroll3_lab = new ScrollComponent
 	parent: labShow
 	height: 20
 	scrollVertical: false
@@ -207,7 +207,7 @@ for i in [0...labels.length]
 		height: cardHight
 		y: (cardHight + padding)*i + padding
 		clip: true
-		parent: scroll1.content
+		parent: scroll1_lab.content
 		backgroundColor: "ffffff"
 
 		fontSize: "12px"
@@ -218,7 +218,7 @@ for i in [0...labels.length]
 		color: "3F434A"
 		x: margin 
 		y: (cardHight + padding)*i + padding + 8
-		parent: scroll1.content
+		parent: scroll1_lab.content
 		superLayer: card
 		text: labels[i]
 		backgroundColor: "d2d2d2"
@@ -236,10 +236,10 @@ for i in [0...labels.length]
 				x: horizontalWidth(j) 
 				y: (cardHight + padding)*i + padding
 				
-				parent: scroll2.content
+				parent: scroll2_lab.content
 			value.text = values[j]
 	cards.push(card)
-scroll2.parent = scroll1.content
+scroll2_lab.parent = scroll1_lab.content
 
 for k in [0..9]
 	date = new TextLayer
@@ -248,13 +248,16 @@ for k in [0..9]
 		top:40
 		x: horizontalWidth(k)
 		text: datesText[k]
-		parent: scroll3.content 
-scroll2.onMove ->
-	scroll3.scrollX = scroll2.scrollX
-scroll3.y = scroll1.y - 20
+		parent: scroll3_lab.content 
+scroll2_lab.onMove ->
+	scroll3_lab.scrollX = scroll2_lab.scrollX
+#scroll3_lab.onMove ->
+#	scroll2_lab.scrollX = scroll3_lab.scrollX
+scroll3_lab.y = scroll1_lab.y - 20
+
 
 today = 4
-scroll2.onClick ->
+scroll2_lab.onClick ->
 	scroll2.scrollToPoint(
 		x: horizontalWidth(today)
 		true
